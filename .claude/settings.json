@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [],
+    "deny": [
+      "Bash(git reset --hard*)",
+      "Bash(aws cloudfront create-invalidation*)",
+      "Bash(aws s3 sync*)",
+      "Bash(docker push*)",
+      "Bash(rm -rf*)",
+      "Bash(gh pr merge*)"
+    ]
+  }
+}

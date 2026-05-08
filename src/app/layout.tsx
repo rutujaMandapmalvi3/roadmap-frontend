@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+// AmplifyProvider is a 'use client' component that calls Amplify.configure()
+// it must be a separate component because layout.tsx is a server component by default
+// wrapping children in it ensures Amplify is initialized before any page renders
+import AmplifyProvider from "@/components/AmplifyProvider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +31,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+          <AmplifyProvider>{children}</AmplifyProvider>
+        </body>
     </html>
   );
 }
